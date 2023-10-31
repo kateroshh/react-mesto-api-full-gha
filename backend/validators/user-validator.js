@@ -1,5 +1,5 @@
-const { celebrate, Joi } = require('celebrate');
-Joi.objectId = require('joi-objectid')(Joi);
+const { celebrate, Joi } = require("celebrate");
+Joi.objectId = require("joi-objectid")(Joi);
 
 module.exports = {
   validateObjId: celebrate({
@@ -14,8 +14,10 @@ module.exports = {
   }),
   validateProfile: celebrate({
     body: Joi.object().keys({
-      name: Joi.string().default("Жак-Ив Кусто").required().min(2).max(30),
-      about: Joi.string().default("Исследователь").required().min(2).max(30),
+      name: Joi.string().default("Жак-Ив Кусто").required().min(2)
+        .max(30),
+      about: Joi.string().default("Исследователь").required().min(2)
+        .max(30),
     }),
   }),
   validateNewUser: celebrate({

@@ -2,14 +2,14 @@ const express = require("express");
 const mongoose = require("mongoose");
 require("dotenv").config();
 const cookieParser = require("cookie-parser");
-const { errors } = require('celebrate');
+const { errors } = require("celebrate");
+const cors = require("cors");
 const { UserRouter } = require("./routes/users");
 const { CardRouter } = require("./routes/cards");
 const { login, createUser } = require("./controllers/users");
 const auth = require("./middlewares/auth");
 const errorHandler = require("./middlewares/error-handler");
 const { validateNewUser, validateLogin } = require("./validators/user-validator");
-const cors = require("cors");
 const { requestLogger, errorLogger } = require("./middlewares/logger");
 
 const { PORT = 3000, MONGO_URL = "mongodb://localhost:27017/mestodb" } = process.env;

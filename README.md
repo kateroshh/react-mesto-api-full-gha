@@ -8,7 +8,7 @@
 
 ## Ссылки на проект
 
-IP-адрес: IP 51.250.87.228
+IP 51.250.87.228
 
 Frontend https://kateroshh.nomoredomainsrocks.ru
 

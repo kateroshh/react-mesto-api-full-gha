@@ -109,7 +109,9 @@ const login = async (req, res, next) => {
 
     const token = generateToken({ _id: user._id, email: user.email });
 
-    res.cookie("userToken", token, { maxAge: 3600000, httpOnly: true, sameSite: "None" });
+    res.cookie("userToken", token, {
+      maxAge: 3600000, httpOnly: true, sameSite: "none", secure: true,
+    });
 
     return res.status(200).send({ email: user.email, id: user._id });
   } catch (error) {

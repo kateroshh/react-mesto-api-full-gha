@@ -16,7 +16,7 @@ const { PORT = 3000, MONGO_URL = "mongodb://localhost:27017/mestodb" } = process
 
 const app = express();
 
-app.use(cors({ origin: ["http://localhost:3001", "kateroshh.nomoredomainsrocks.ru"], credentials: true }));
+app.use(cors({ origin: ["http://localhost:3001", "https://kateroshh.nomoredomainsrocks.ru"], credentials: true }));
 
 mongoose.connect(MONGO_URL).then(() => console.log("Connected!"));
 

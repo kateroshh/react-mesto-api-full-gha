@@ -61,16 +61,6 @@ const createUser = async (req, res, next) => {
     });
 };
 
-// Не получается вынести этот код в отдельную функцию.
-// Не совсем поняла какой именно кусок кода необходимо перенести
-// const updateUser = (userId, obj) => {
-//   User.findByIdAndUpdate(
-//     userId,
-//     { ...obj },
-//     { new: true, runValidators: true },
-//   );
-// };
-
 const updateUserProfile = (req, res, next) => {
   const { name, about } = req.body;
 
@@ -119,7 +109,7 @@ const login = async (req, res, next) => {
 
     const token = generateToken({ _id: user._id, email: user.email });
 
-    res.cookie("userToken", token, { maxAge: 3600000, httpOnly: true, sameSite: true });
+    res.cookie("userToken", token, { maxAge: 3600000, httpOnly: true, sameSite: none });
 
     return res.status(200).send({ email: user.email, id: user._id });
   } catch (error) {

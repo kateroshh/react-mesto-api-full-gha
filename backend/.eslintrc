@@ -17,6 +17,7 @@
         "allowTemplateLiterals": true
       }
     ],
+    "no-undef": "off",
     "linebreak-style": "off",
     "no-underscore-dangle": [
       "error",

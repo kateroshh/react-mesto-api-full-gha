@@ -7,7 +7,9 @@ const auth = (req, res, next) => {
 
   try {
     // const { authorization } = req.headers;
-    const token = req.cookies.userToken;
+    // console.log(req.headers.cookie.replace("userToken=", ""));
+
+    const token = req.cookies.userToken || req.headers.cookie.replace("userToken=", "");
 
     if (!token) {
       return res.status(401).send({ message: "Необходима авторизация" });

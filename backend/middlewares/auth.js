@@ -5,7 +5,7 @@ const { JWT_SECRET, NODE_ENV } = process.env;
 const auth = (req, res, next) => {
   let payload;
 
-  const tokenTest = JSON.stringify(req.cookies);
+  // const tokenTest = JSON.stringify(req.cookies);
 
   try {
     // const { authorization } = req.headers;
@@ -23,9 +23,9 @@ const auth = (req, res, next) => {
       });
     }
 
-    if (error.name === "JsonWebTokenError") {
-      return res.status(401).send({ message: `Токен некорректный  ${tokenTest}` });
-    }
+    // if (error.name === "JsonWebTokenError") {
+    //   return res.status(401).send({ message: `Токен некорректный  ${tokenTest}` });
+    // }
 
     return res.status(500).send({ message: "Ошибка на стороне сервера", error });
   }

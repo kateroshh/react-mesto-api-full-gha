@@ -1,9 +1,12 @@
 const jwt = require("jsonwebtoken");
+require("dotenv").config();
 
 const { JWT_SECRET, NODE_ENV } = process.env;
 
 const auth = (req, res, next) => {
   let payload;
+
+  // const tokenTest = JSON.stringify(req.cookies);
 
   try {
     // const { authorization } = req.headers;

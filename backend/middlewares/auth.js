@@ -22,9 +22,7 @@ const auth = (req, res, next) => {
     }
 
     if (error.name === "JsonWebTokenError") {
-      return res.status(401).send({
-        message: "Токен некорректный",
-      });
+      return res.status(401).send({ message: "Токен некорректный", error });
     }
 
     return res.status(500).send({ message: "Ошибка на стороне сервера", error });

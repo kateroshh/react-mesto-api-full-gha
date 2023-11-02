@@ -4,14 +4,14 @@ const { JWT_SECRET, NODE_ENV } = process.env;
 
 const auth = (req, res, next) => {
   let payload;
+  const token = req.cookies.userToken;
 
   try {
     // const { authorization } = req.headers;
-    const token = req.cookies.userToken;
 
-    if (!token) {
-      return res.status(401).send({ message: "Необходима авторизация" });
-    }
+    // if (!token) {
+    //   return res.status(401).send({ message: "Необходима авторизация" });
+    // }
 
     payload = jwt.verify(token, NODE_ENV === "production" ? JWT_SECRET : "dev_secret");
   } catch (error) {

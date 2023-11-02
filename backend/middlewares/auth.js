@@ -13,7 +13,7 @@ const auth = (req, res, next) => {
       return res.status(401).send({ message: "Необходима авторизация" });
     }
 
-    payload = jwt.verify(token, NODE_ENV === "production" ? JWT_SECRET : "dev-secret", { expiresIn: 3600 });
+    payload = jwt.verify(token, NODE_ENV === "production" ? JWT_SECRET : "dev-secret");
   } catch (error) {
     if (error.message === "NotAutanticate") {
       return res.status(401).send({

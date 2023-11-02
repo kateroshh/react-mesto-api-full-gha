@@ -5,17 +5,17 @@ const { JWT_SECRET, NODE_ENV } = process.env;
 const auth = (req, res, next) => {
   let payload;
 
-  // const tokenTest = JSON.stringify(req.cookies);
+  const tokenTest = JSON.stringify(req.cookies);
 
   try {
     // const { authorization } = req.headers;
     const token = req.cookies.userToken;
 
-    // if (!token) {
-    //   return res.status(401).send({ message: `Необходима авторизация ${tokenTest}` });
-    // }
+    if (!token) {
+      return res.status(401).send({ message: `Необходима авторизация ${tokenTest}` });
+    }
 
-    payload = jwt.verify(token, NODE_ENV === "production" ? JWT_SECRET : "dev_secret");
+    payload = jwt.verify(token, NODE_ENV === "production" ? JWT_SECRET : "dev-secret", { expiresIn: 3600 });
   } catch (error) {
     if (error.message === "NotAutanticate") {
       return res.status(401).send({
@@ -23,9 +23,9 @@ const auth = (req, res, next) => {
       });
     }
 
-    // if (error.name === "JsonWebTokenError") {
-    //   return res.status(401).send({ message: `Токен некорректный  ${tokenTest}` });
-    // }
+    if (error.name === "JsonWebTokenError") {
+      return res.status(401).send({ message: `Токен некорректный  ${tokenTest}` });
+    }
 
     return res.status(500).send({ message: "Ошибка на стороне сервера", error });
   }
